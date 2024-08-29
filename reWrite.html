@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // map function rewrite
+        Array.prototype.mapfn = function(callback) {
+            let result = [];
+            for (i = 0; i < this.length; i++) {
+                result.push(callback(this[i], i, this));
+            }
+            return result;
+        }
+
+        var b = [3, 4, 5].mapfn((callback) => {
+            return callback * 2;
+        })
+
+        console.log(b);
+    </script>
+</body>
+
+</html>
