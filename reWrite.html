@@ -22,7 +22,7 @@
             return callback * 2;
         })
 
-        // console.log(b);
+        console.log(b);
 
         //reduce function
         Array.prototype.reduceFn = function(callback, initialValue) {
@@ -38,7 +38,7 @@
 
         const numbers = [1, 2, 3, 4, 5];
         const sum = numbers.reduceFn((acc, curr) => acc + curr, 0);
-        // console.log(sum); // Kết quả: 15
+        console.log(sum); // Kết quả: 15
 
         // find function
         Array.prototype.findFn = function(callback) {
@@ -55,6 +55,23 @@
         })
 
         console.log(findNumGT3);
+
+        // find function
+        Array.prototype.filterFn = function(callback) {
+            let result = [];
+            for (let i = 0; i < this.length; i++) {
+                if (callback(this[i], i, this)) {
+                    result.push(this[i]);
+                }
+            }
+            return result;
+        }
+
+        const filterNumGT3 = [3, 5, 7].filterFn((num) => {
+            return num > 3;
+        })
+
+        console.log(filterNumGT3);
     </script>
 </body>
 
