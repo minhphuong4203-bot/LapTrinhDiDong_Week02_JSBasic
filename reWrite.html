@@ -38,7 +38,23 @@
 
         const numbers = [1, 2, 3, 4, 5];
         const sum = numbers.reduceFn((acc, curr) => acc + curr, 0);
-        console.log(sum); // Kết quả: 15
+        // console.log(sum); // Kết quả: 15
+
+        // find function
+        Array.prototype.findFn = function(callback) {
+            for (let i = 0; i < this.length; i++) {
+                if (callback(this[i], i, this)) {
+                    return this[i];
+                }
+            }
+            return undefined;
+        }
+
+        const findNumGT3 = [3, 5, 7].findFn((num) => {
+            return num > 3;
+        })
+
+        console.log(findNumGT3);
     </script>
 </body>
 
