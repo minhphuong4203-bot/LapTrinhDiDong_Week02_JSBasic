@@ -22,7 +22,23 @@
             return callback * 2;
         })
 
-        console.log(b);
+        // console.log(b);
+
+        //reduce function
+        Array.prototype.reduceFn = function(callback, initialValue) {
+            let accumulator = initialValue !== undefined ? initialValue : this[0];
+            let startIndex = initialValue !== undefined ? 0 : 1;
+
+            for (let i = startIndex; i < this.length; i++) {
+                accumulator = callback(accumulator, this[i], i, this);
+            }
+
+            return accumulator;
+        };
+
+        const numbers = [1, 2, 3, 4, 5];
+        const sum = numbers.reduceFn((acc, curr) => acc + curr, 0);
+        console.log(sum); // Kết quả: 15
     </script>
 </body>
 
